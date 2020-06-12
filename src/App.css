@@ -1,3 +1,23 @@
+body {
+  background-color: #282c34;
+  overflow-x: hidden;
+}
+
+html {
+  font-size: calc(0.4em + 0.4vw);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+h1{
+  color:#f1f1f1;
+  font-weight: 100;
+  font-size: 30px !important;
+  padding: 1px;
+}
+h1,th,td{
+  filter: drop-shadow(0.5px 0.5px 0.5px grey);
+}
+
 .App {
   text-align: center;
 }
@@ -28,10 +48,51 @@
   color: #61dafb;
 }
 
+.search {
+  margin: 4%;
+  margin-left: 20%;
+  margin-right: 10%;
+  align-content: center;
+}
+
+
+
+.covid-card {
+  background-color: #242019;
+  border-radius: 10px;
+  /* background-color: #ffffff99; */
+}
+.covid-card:hover{
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 10px #1244ff);
+}
+
+.country-card{
+  /* background-color: #61dafb; */
+}
+
+
+.data-table {
+
+}
+
+
+.flag-img {
+  width: 64px;
+  filter: drop-shadow(2px 2px 4px grey);
+  margin-right: 20px;
+}
+.pie-chart{
+  background-color: #009ac550;
+}
+.bar-chart{
+background-color: rgba(255, 172, 241, 0.226);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
