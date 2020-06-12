@@ -58,7 +58,7 @@ h1,th,td{
 
 
 .covid-card {
-  background-color: #242019;
+  background-color: #1a1816;
   border-radius: 10px;
   /* background-color: #ffffff99; */
 }
@@ -86,7 +86,7 @@ h1,th,td{
   background-color: #009ac550;
 }
 .bar-chart{
-background-color: rgba(255, 172, 241, 0.226);
+background-color: rgba(44, 32, 42, 0.226);
 }
 @keyframes App-logo-spin {
   from {
