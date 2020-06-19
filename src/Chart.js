@@ -22,7 +22,6 @@ class Chart extends Component {
       ],
       datasets: [
         {
-          label: `${Country}'s Corona Report`,
           backgroundColor: [
             "rgba(50,50,200,0.5)",
             "rgba(200,50,50,0.5)",
@@ -77,16 +76,16 @@ class Chart extends Component {
           options={{
             title: {
               display: true,
-              text:  `${Country}'s Corona Report`,
+              text:  Country ? `${Country}'s Corona Report` :"Global Corona Report",
               fontSize: 20,
             },
             legend: {
-              display: true,
+              display: false,
               position: "right",
             },
             layout: {
               padding: {
-                left: 50,
+                left: 0,
                 right: 0,
                 top: 0,
                 bottom: 0,
@@ -98,7 +97,7 @@ class Chart extends Component {
                   gridLines: {
                     offsetGridLines: false,
                   },
-                  barPercentage: 0.4,
+                  barPercentage: 0.5,
                 },
               ],
               yAxes: [

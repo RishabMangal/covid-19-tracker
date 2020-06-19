@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Chart from "./Chart";
+import globe from './globe.png';
 class Covidcard extends Component {
   render() {
-    var d = new Date(this.props.Date);
+    var d = this.props.Date
+      ? new Date(this.props.Date)
+      : new Date(this.props.data.Date);
     const {
       NewConfirmed,
       NewDeaths,
@@ -10,27 +13,33 @@ class Covidcard extends Component {
       TotalConfirmed,
       TotalDeaths,
       TotalRecovered,
-      } = this.props.data;
+    } = this.props.data;
     return (
-      <div
-        className="container-fluid"
-        style={{
-          backgroundImage: `url(https://previews.123rf.com/images/lightwise/lightwise1110/lightwise111000251/10909934-world-flags-sphere-floating-and-isolated-as-a-symbol-representing-international-global-cooperation-i.jpg)`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat,repeat",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="covid-card row mx-0 container-fluid">
-          <h1 className="lead display-4 col-sm-12">
-            <img
-              src={`https://previews.123rf.com/images/lightwise/lightwise1110/lightwise111000251/10909934-world-flags-sphere-floating-and-isolated-as-a-symbol-representing-international-global-cooperation-i.jpg`}
-              alt="flag"
-              className="flag-img"
-            ></img>Global
-          </h1>
-          <table className="table data-table col-sm-4">
-          <tbody>
+      <div className="covid-card">
+        <div className="mx-0 row">
+          {this.props.data.Country ? (
+            <h1 className="lead display-4 col-sm-12">
+              <img
+                src={`https://www.countryflags.io/${this.props.data.CountryCode}/shiny/64.png`}
+                alt="flag"
+                className="flag-img"
+              ></img>{" "}
+              {this.props.data.Country} [{this.props.data.CountryCode}]
+            </h1>
+          ) : (
+            <h1 className="lead display-4 col-sm-12">
+              <img
+                src={globe}
+                alt="flag"
+                className="flag-img"
+              ></img>
+              Global
+            </h1>
+          )}
+
+          <div className="col-sm-4">
+            <table className="table data-table">
+              <tbody>
                 <tr>
                   <th className="text-info">New Confirmed</th>
                   <td className="text-info">{NewConfirmed}</td>
@@ -57,13 +66,16 @@ class Covidcard extends Component {
                 </tr>
                 <tr>
                   <th className="text-primary">Date</th>
-                  <td className="text-primary text-cursive">{d.toDateString()}</td>
+                  <td className="text-primary text-cursive">
+                    {d.toDateString()}
+                  </td>
                 </tr>
               </tbody>
-                </table>
-                <div className="col-sm-8">
-                    <Chart data={this.props.data}></Chart>
-                </div>
+            </table>
+          </div>
+          <div className="col-sm-8">
+            <Chart data={this.props.data}></Chart>
+          </div>
         </div>
       </div>
     );

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Covidcard from "./Covidcard";
 import CountryCard from "./CountryCard";
 import Loader from "react-loader-spinner";
+import Strip from "./Strip";
+
 class Covid extends Component {
   constructor(props) {
     super(props);
@@ -10,28 +12,43 @@ class Covid extends Component {
       country: "",
       data: {},
       loading: true,
+      index: 76
     };
-    }
-    
+  }
 
-    async componentDidMount() {
-      await fetch("https://api.covid19api.com/summary")
-        .then((res) => res.json())
-        .then((data) => this.setState({ data, loading: false }))
-        .catch((err) => console.log(err));
-      console.log(this.state.data);
-    }
-    render() {
-         let temp = {
-        Country:"Global",    
-        NewConfirmed: 154681,
-        NewDeaths: 5292,
-        NewRecovered: 85889,
-        TotalConfirmed: 7612919,
-        TotalDeaths: 429514,
-        TotalRecovered: 3540045}
+  async componentDidMount() {
+    await fetch("https://api.covid19api.com/summary")
+      .then((res) => res.json())
+      .then((data) => this.setState({ data, loading: false }))
+      .catch((err) => console.log(err));
+    console.log(this.state.data);
+  }
+
+  search = (e) => {
+    e.preventDefault();
+    this.state.data.Countries.find((c, i) => {
+      if (c.Country.toLowerCase() === this.state.country.toLowerCase())
+        this.setState({ country: "", index: i });
+      return 0;
+    });
+  };
+  render() {
     return (
       <div>
+        {!this.state.loading && (
+          <div className="row mx-0 strip">
+            {this.state.data.Countries.map((c, i) => (
+              <div
+                className="m-0"
+                key={i}
+                onClick={() => this.setState({ index: i })}
+              >
+                <Strip CountryCode={c.CountryCode} Country={c.Country}></Strip>
+              </div>
+            ))}
+          </div>
+        )}
+
         <form className="row search" onSubmit={this.search}>
           <input
             type="text"
@@ -41,6 +58,7 @@ class Covid extends Component {
             className="form-control form-control-lg col-sm-8"
             required
           ></input>
+
           <input
             type="submit"
             value="Submit"
@@ -79,11 +97,20 @@ class Covid extends Component {
             Date={this.state.data.Date}
           ></Covidcard>
         )}
+        {!this.state.loading && (
+          <Covidcard
+            data={this.state.data.Countries[this.state.index]}
+          ></Covidcard>
+        )}
 
         {!this.state.loading && (
           <div className="row mx-0">
             {this.state.data.Countries.map((c, i) => (
-              <div className="col-sm-4 p-2 country-card" key={i}>
+              <div
+                className="col-sm-4 country-card"
+                key={i}
+                onClick={() => this.setState({ index: i })}
+              >
                 <CountryCard data={c}></CountryCard>
               </div>
             ))}

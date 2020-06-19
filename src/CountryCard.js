@@ -35,39 +35,41 @@ class CountryCard extends Component {
               ></img>{" "}
               {Country} [{CountryCode}]
             </h1>
-            <table className="table data-table col-sm-6 table-hover table-sm table-responsive-sm m-1 ">
-              <tbody>
-                <tr>
-                  <th className="text-info">New Confirmed</th>
-                  <td className="text-info">{NewConfirmed}</td>
-                </tr>
-                <tr>
-                  <th className="text-danger">New Deaths</th>
-                  <td className="text-danger">{NewDeaths}</td>
-                </tr>
-                <tr>
-                  <th className="text-success">New Recovered</th>
-                  <td className="text-success">{NewRecovered}</td>
-                </tr>
-                <tr>
-                  <th className="text-info">Total Confirmed</th>
-                  <td className="text-info">{TotalConfirmed}</td>
-                </tr>
-                <tr>
-                  <th className="text-danger">Total Deaths</th>
-                  <td className="text-danger">{TotalDeaths}</td>
-                </tr>
-                <tr>
-                  <th className="text-success">Total Recovered</th>
-                  <td className="text-success">{TotalRecovered}</td>
-                </tr>
-                <tr>
-                  <th className="text-primary">Date</th>
-                  <td className="text-primary">{d.toDateString()}</td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="col-sm-5">
+            <div className="col-sm-6">
+              <table className="table data-table table-hover table-sm  m-1 ">
+                <tbody>
+                  <tr>
+                    <th className="text-info">New Confirmed</th>
+                    <td className="text-info">{NewConfirmed}</td>
+                  </tr>
+                  <tr>
+                    <th className="text-danger">New Deaths</th>
+                    <td className="text-danger">{NewDeaths}</td>
+                  </tr>
+                  <tr>
+                    <th className="text-success">New Recovered</th>
+                    <td className="text-success">{NewRecovered}</td>
+                  </tr>
+                  <tr>
+                    <th className="text-info">Total Confirmed</th>
+                    <td className="text-info">{TotalConfirmed}</td>
+                  </tr>
+                  <tr>
+                    <th className="text-danger">Total Deaths</th>
+                    <td className="text-danger">{TotalDeaths}</td>
+                  </tr>
+                  <tr>
+                    <th className="text-success">Total Recovered</th>
+                    <td className="text-success">{TotalRecovered}</td>
+                  </tr>
+                  <tr>
+                    <th className="text-primary">Date</th>
+                    <td className="text-primary">{d.toDateString()}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="col-sm-6">
               <PieChart data={this.props.data}></PieChart>
             </div>
           </div>
