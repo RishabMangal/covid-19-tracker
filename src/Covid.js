@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Covidcard from "./Covidcard";
 import CountryCard from "./CountryCard";
 import Loader from "react-loader-spinner";
-import Strip from "./Strip";
+// import Strip from "./Strip";
 
 class Covid extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class Covid extends Component {
   render() {
     return (
       <div>
-        {!this.state.loading && (
+        {/* {!this.state.loading && (
           <div className="row mx-0 strip">
             {this.state.data.Countries.map((c, i) => (
               <div
@@ -47,7 +47,7 @@ class Covid extends Component {
               </div>
             ))}
           </div>
-        )}
+        )} */}
 
         <form className="row search" onSubmit={this.search}>
           <input
