@@ -63,8 +63,8 @@ class CountryCard extends Component {
                     <td className="text-success">{TotalRecovered}</td>
                   </tr>
                   <tr>
-                    <th className="text-primary">Date</th>
-                    <td className="text-primary">{d.toDateString()}</td>
+                    <th className="text-warning">Date</th>
+                    <td className="text-warning">{d.toDateString()}</td>
                   </tr>
                 </tbody>
               </table>

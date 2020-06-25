@@ -65,8 +65,8 @@ class Covidcard extends Component {
                   <td className="text-success">{TotalRecovered}</td>
                 </tr>
                 <tr>
-                  <th className="text-primary">Date</th>
-                  <td className="text-primary text-cursive">
+                  <th className="text-warning">Date</th>
+                  <td className="text-warning text-cursive">
                     {d.toDateString()}
                   </td>
                 </tr>
