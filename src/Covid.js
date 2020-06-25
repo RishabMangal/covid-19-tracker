@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Covidcard from "./Covidcard";
 import CountryCard from "./CountryCard";
 import Loader from "react-loader-spinner";
-// import Strip from "./Strip";
 
 class Covid extends Component {
   constructor(props) {
@@ -13,6 +12,7 @@ class Covid extends Component {
       data: {},
       loading: true,
       index: 76,
+      class: "",
     };
   }
 
@@ -26,11 +26,12 @@ class Covid extends Component {
 
   search = (e) => {
     e.preventDefault();
-    this.state.data.Countries.find((c, i) => {
+    let x = this.state.data.Countries.find((c, i) => {
       if (c.Country.toLowerCase() === this.state.country.toLowerCase())
-        this.setState({ country: "", index: i });
-      return 0;
+        this.setState({ country: "", index: i, class: "is-valid" });
+      return c.Country.toLowerCase() === this.state.country.toLowerCase();
     });
+    if (!x) this.setState({ class: "is-invalid" });
   };
   render() {
     return (
@@ -43,7 +44,6 @@ class Covid extends Component {
                 key={i}
                 onClick={() => this.setState({ index: i })}
               >
-                {/* <Strip CountryCode={c.CountryCode} Country={c.Country} ></Strip> */}
                 <img
                   src={`https://www.countryflags.io/${c.CountryCode}/shiny/64.png`}
                   alt={`${c.CountryCode}`}
@@ -55,21 +55,28 @@ class Covid extends Component {
           </div>
         )}
 
-        <form className="row search" onSubmit={this.search}>
-          <input
-            type="text"
-            placeholder="Enter Country Name..."
-            onChange={(e) => this.setState({ country: e.target.value })}
-            value={this.state.country}
-            className="form-control form-control-lg col-sm-8"
-            required
-          ></input>
+        <form className="search" onSubmit={this.search}>
+          <div className="form-group row">
+            {this.state.class === "is-invalid" ? (
+              <div className="col-sm-12 m-1 text-danger lead text-left">
+                <i className="fas fa-exclamation-triangle"></i> No Such Country....!
+              </div>
+            ) : null}
+            <input
+              type="text"
+              placeholder="Enter Country Name..."
+              onChange={(e) => this.setState({ country: e.target.value })}
+              value={this.state.country}
+              className={`form-control form-control-lg ${this.state.class} col-sm-8`}
+              required
+            ></input>
 
-          <input
-            type="submit"
-            value="Submit"
-            className="btn btn-primary col-sm-2"
-          ></input>
+            <input
+              type="submit"
+              value="Submit"
+              className="btn btn-primary col-sm-2"
+            ></input>
+          </div>
         </form>
         {this.state.loading && (
           <div
