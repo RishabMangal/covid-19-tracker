@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Covidcard from "./Covidcard";
 import CountryCard from "./CountryCard";
 import Loader from "react-loader-spinner";
-import Strip from "./Strip";
+// import Strip from "./Strip";
 
 class Covid extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Covid extends Component {
       country: "",
       data: {},
       loading: true,
-      index: 76
+      index: 76,
     };
   }
 
@@ -43,7 +43,13 @@ class Covid extends Component {
                 key={i}
                 onClick={() => this.setState({ index: i })}
               >
-                <Strip CountryCode={c.CountryCode} Country={c.Country} ></Strip>
+                {/* <Strip CountryCode={c.CountryCode} Country={c.Country} ></Strip> */}
+                <img
+                  src={`https://www.countryflags.io/${c.CountryCode}/shiny/64.png`}
+                  alt={`${c.CountryCode}`}
+                  className="m-0 flag-strip"
+                  title={c.Country}
+                ></img>
               </div>
             ))}
           </div>
