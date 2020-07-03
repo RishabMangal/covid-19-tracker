@@ -15,7 +15,7 @@ class Covidcard extends Component {
       TotalRecovered,
     } = this.props.data;
     return (
-      <div className="covid-card">
+      <div className="covid-card" id="country-report">
         <div className="mx-0 row">
           {this.props.data.Country ? (
             <h1 className="lead display-4 col-sm-12">
@@ -31,7 +31,7 @@ class Covidcard extends Component {
               <img
                 src={globe}
                 alt="flag"
-                className="flag-img"
+                className="flag-img mt-2"
               ></img>
               Global
             </h1>

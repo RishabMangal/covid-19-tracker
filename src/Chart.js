@@ -23,12 +23,12 @@ class Chart extends Component {
       datasets: [
         {
           backgroundColor: [
-            "rgba(50,50,200,0.5)",
-            "rgba(200,50,50,0.5)",
-            "rgba(50,200,50,0.5)",
-            "rgba(100,100,255,0.5)",
-            "rgba(255,100,100,0.5)",
-            "rgba(100,255,100,0.5)",
+            "rgba(150,150,200,0.5)",
+            "rgba(200,150,150,0.5)",
+            "rgba(150,200,150,0.5)",
+            "rgba(10,10,255,0.5)",
+            "rgba(255,10,10,0.5)",
+            "rgba(10,255,10,0.5)",
           ],
           borderColor: [
             "rgba(0,0,200,1)",
@@ -76,7 +76,9 @@ class Chart extends Component {
           options={{
             title: {
               display: true,
-              text:  Country ? `${Country}'s Corona Report` :"Global Corona Report",
+              text: Country
+                ? `${Country}'s Corona Report`
+                : "Global Corona Report",
               fontSize: 20,
             },
             legend: {
